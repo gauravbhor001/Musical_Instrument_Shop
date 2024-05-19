@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "images" as imgurl %}
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Musicstore Website Template | Home :: W3layouts</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'http://fonts.googleapis.com/css?family=Open+Sans' %}" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/responsiveslides.css' %}">
+    <script src="{% static 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %}"></script>
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+        {% include "links.html" %}
+    </head>
+    <body>
+        <!---start-header--->
+        <div class="header">
+            <!---start-top-header--->
+            <div class="top-header">
+                <div class="top-header-left"></div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="sub-header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="{% static 'images/logo.png' %}" title="logo" />
+                    </a>
+                </div>
+                <div class="sub-header-right">
+                    <ul>
+<!--                        {% if user.is_authenticated %}-->
+<!--                            <li style="color:yellow">Welcome,{{ user.first_name }}</li>-->
+<!--                            <li>-->
+<!--                                <a href="logout">Logout</a>-->
+<!--                            </li>-->
+<!--                        {% else %}-->
+<!--                            <li>-->
+<!--                                <a href="register">Registration</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="login">Login</a>-->
+<!--                            </li>-->
+<!--                        {% endif %}-->
+<!--                        <li>-->
+<!--                            <a href="admin/">Admin Login</a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="{% url 'MusicalApp:cartlist' %}">CART: ({{ cart|length }})-->
+<!--                                <img src="{% static 'images/cart.png' %}" title="cart" />-->
+<!--                            </a>-->
+<!--                        </li>-->
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="top-nav">
+                <ul>
+                    <li class="active1">
+                        <a href="index">Home</a>
+                    </li>
+                    <li>
+                        <a href="Products">More Products</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li style="color:yellow">Welcome,{{ user.first_name }}</li>
+                        <li>
+                            <a href="logout">Logout</a>
+                        </li>
+                    <li style="text-align:right">
+                        <a href="{% url 'MusicalApp:cartlist' %}">CART: ({{ cart|length }})
+                            <img src="{% static 'images/cart.png' %}" title="cart" />
+                        </a>
+                    </li>
+                    {% else %}
+                        <li>
+                            <a href="register">Registration</a>
+                        </li>
+                        <li>
+                            <a href="login">Login</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="admin/">Admin Login</a>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+                <p><marquee>
+                {% if totalbill is not None %}<h1 style="color:red">Your Total Bill is : RS-{{ totalbill }}</h1>{% endif %}
+                {% for m in messages %}<h1 style="color:red">{{ m }}</h1>{% endfor %}
+                </marquee>
+                </p>
+            </div>
+            <!---end-top-header--->
+            <!---End-header--->
+        </div>
+    </body>
+</html>

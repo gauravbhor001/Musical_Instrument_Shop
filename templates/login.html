@@ -1,0 +1,35 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	{% include "links.html" %}
+</head>
+{% include "header.html" %}
+<body>
+<br>
+<br>
+<br>
+<form action="login" method="post" >
+  {% csrf_token %}
+  <h2 align="center">Login</h2>
+  <p>
+    <label  class="floatLabel">Username</label>
+    <input  name="username" type="text">
+  </p>
+  <p>
+    <label for="password" class="floatLabel">Password</label>
+    <input id="password" name="password" type="password">
+  </p>
+
+  <p>
+    <input type="submit" value="Login to Your Account" id="submit">
+  </p>
+</form>
+
+<br>
+<br>
+{% include "footer.html" %}
+
+</body>
+</html>

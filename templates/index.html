@@ -1,0 +1,92 @@
+<!DOCTYPE HTML> {% load static %}
+{% static "images" as imgurl %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Musicstore Website Template</title>
+    {% include "links.html" %}
+</head>
+
+<body>
+        {% include "header.html" %}
+        <div class="header">
+        </div>
+        <!--start-image-slider---->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                    </button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider1.jpg' %}" height="600" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider2.jpg' %}" height="600" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider6.jpg' %}" height="600" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+        </div>
+        <!--End-image-slider---->
+        <div class="content">
+            <div class="products-box">
+                <div class="products">
+                    <h5 align="center">
+                        <span>FEATURED</span> PRODUCTS
+                    </h5>
+                    <div class="section group">
+                        {% for i in details %}
+                        <div class="grid_1_of_5 images_1_of_5">
+                            <img src={{ i.img.url }} height="220" width="220">
+                            </img>
+                            <h3>{{ i.instrumentName }}</h3>
+                            <p>
+                                {{ i.description }}
+                            </p>
+                            <h4>RS {{ i.price }}</h4>
+                            {% if user.is_authenticated %}
+                            <div class="button">
+                                <span><a href="{% url 'MusicalApp:addToCart' i.id %}">AddToCart</a></span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="button1" href="index.html">View all</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="products products-secondbox">
+                    <h5 align="center">
+                        <span>TOP</span> BRANDS
+                    </h5>
+                    <div class="section group">
+                        {% for p in data %}
+                        <div class="grid_1_of_5 images_1_of_5">
+                            <img src={{ p.imges.url }} height="120" width="120">
+                            </img>
+                        </div>
+                        {% endfor %}
+                        <a class="button1" href="#">View all</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---End-wrap--->
+    </div>
+    {% include "footer.html" %}
+</body>
+
+</html>

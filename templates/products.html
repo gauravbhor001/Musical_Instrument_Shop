@@ -1,0 +1,48 @@
+<!DOCTYPE html> {% load static %}
+{% static "images" as imgurl %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    {% include "links.html" %}
+</head>
+<body>
+        {% include "header.html" %}
+        <div class="header">
+        <div class="content">
+            <div class="products-box">
+                <div class="products">
+                    <h5 align="center">
+                        <span>FEATURED</span> PRODUCTS
+                    </h5>
+                    <div class="section group">
+                        {% for i in details %}
+                        <div class="grid_1_of_5 images_1_of_5">
+                            <img src={{ i.instrument.img.url }} height="220" width="220">
+                            </img>
+                            <h3>{{ i.instrumentName }}</h3>
+                            <p>
+                                {{ i.description }}
+                            </p>
+                            <h4>RS {{ i.price }}</h4>
+                            {% if user.is_authenticated %}
+                            <div class="button">
+                                <span><a href="{% url 'MusicalApp:addToCart' i.id %}">AddToCart</a></span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            {% include "footer.html" %}
+
+</body>
+
+</html>

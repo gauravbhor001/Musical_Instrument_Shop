@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Hello {{name}}</h1>
+<form action="add" method="post" >
+    {% csrf_token %}
+    Enter 1st No :<input  type="text" Name="num1"></br>
+    Enter 2nd No :<input  type="text" Name="num2"></br>
+    <input type="submit">
+</form>
+{% endblock %}
+</body>
+</html>

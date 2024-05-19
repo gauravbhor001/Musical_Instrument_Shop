@@ -1,0 +1,63 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register Your Account</title>
+{% include "links.html" %}
+</head>
+{% include "header.html" %}
+<body>
+    <br>
+    <br>
+    <br>
+    <div>
+        {% for m in messages %}
+        <h3 style="color:red">{{m }}</h3>
+        {% endfor %}
+    </div>
+    <form class="box" action="register" method="post">
+        {% csrf_token %}
+          <h2>Create Your Account</h2>
+        <p>
+    <label  class="floatLabel">First Name</label>
+    <input  name="firstName" type="text">
+  </p>
+        <p>
+    <label  class="floatLabel">Last Name</label>
+    <input  name="lastName" type="text">
+  </p>
+        <p>
+    <label  class="floatLabel">User Name</label>
+    <input  name="UserName" type="text">
+  </p>
+        <p>
+    <label  class="floatLabel">Email Id</label>
+    <input  name="emailId" type="email">
+  </p>
+        <p>
+    <label  class="floatLabel">Password</label>
+    <input  name="Pass1" type="password">
+  </p>
+        <p>
+    <label  class="floatLabel">Confirm Password</label>
+    <input  name="Pass2" type="password">
+  </p>
+
+  <p>
+    <input type="submit" value="Create My Account" id="submit">
+  </p>
+    </form>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</body>
+{% include "footer.html" %}
+</html>
